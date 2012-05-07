@@ -1,0 +1,28 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost');
+	  socket.on('connect', function (data) {
+				$("#msg_box").append("<p>connected to the chat server!!!</p>");
+				socket.on('message', function (data) {
+				$("#msg_box").append("<p>"+data.msg+"</p>");
+			 });
+			 });
+$(document).ready(function(){
+		name=prompt("Your name:")||("Guest_"+Math.round(Math.random()*1000))
+		$("#send_button").click(function(){
+			socket.json.send({msg:name+"> "+$("#message")[0].value});
+			});
+		});
+</script>
+</head>
+<body>
+<div id="msg_box">
+</div>
+<div>
+Your message: <input type="text" name="message" id="message"/>
+<button type="button" id="send_button" name="send_button">send</button>
+</div>
+</body>
