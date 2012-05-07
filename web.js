@@ -26,8 +26,8 @@ app.get('/index.css',function(request,response){
         response.end(data);
       });
    });
-
-app.listen(3000,function(){
-    console.log('listening on port 3000');
+var port = process.env.PORT || 3000;
+app.listen(port,function(){
+    console.log('listening on port port');
     });
 
