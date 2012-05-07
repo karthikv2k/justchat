@@ -6,7 +6,7 @@ rel="stylesheet" type="text/css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io.connect('http://localhost');
+  var socket = io.connect('http://justchat.herokuapp.com/');
 	  socket.on('connect', function (data) {
 				$("#msg_box").append("<p>connected to the chat server!!!</p>");
 				socket.on('message', function (data) {
@@ -24,10 +24,11 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="container">
+<h4>Messages:</h4>
 <div class="msg_box" id="msg_box">
 </div>
 <div>
-Your message: <input type="text" name="message" id="message"/>
+Send a message: <input type="text" name="message" id="message"/>
 <button type="button" id="send_button" name="send_button">send</button>
 </div>
 </div>
