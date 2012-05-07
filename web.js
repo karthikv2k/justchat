@@ -21,6 +21,12 @@ app.get('/',function(request,response){
       });
    });
 
+app.get('/index.css',function(request,response){
+    fs.readFile(__dirname + '/index.css',function(ierr,data){
+        response.end(data);
+      });
+   });
+
 app.listen(3000,function(){
     console.log('listening on port 3000');
     });
