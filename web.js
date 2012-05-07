@@ -8,6 +8,11 @@ var querystring=require("querystring");
 var io = require('socket.io').listen(app);
 var fs = require('fs');
 
+io.configure(function () { 
+      io.set("transports", ["xhr-polling"]); 
+        io.set("polling duration", 10); 
+        });
+
 io.sockets.on('connection',function(socket){
     socket.on('message', function (data) {
       socket.broadcast.json.emit('message',data);
